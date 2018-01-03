@@ -18,9 +18,11 @@ class PageController
         $search = Request::query('search');
         $type = Request::query('type');
         
-        $list = $this->api->search($search, $type);
+        $result = $this->api->search($search, $type);
+        $list = $result->Search;
+        $total = $result->totalResults;
         
-        return view('index', compact('list'));
+        return view('index', compact('list', 'total'));
     }
 
     public function show()

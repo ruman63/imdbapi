@@ -21,23 +21,18 @@ class OMDbApi
 
     public function search(string $keyword, $type = null)
     {
-        $response = $this->fetch([
+        return $this->fetch([
             's' => $keyword,
             'type'=> $type
         ]);
-        $list = $response->Search;
-        $total = $response->totalResults;
-        return view('index', compact('list', 'total'));
     }
 
     public function findById($id, $plot = 'full')
     {
-        $movie = $this->fetch([
+        return $this->fetch([
             'i' => $id,
             'plot' => $plot
         ]);
-
-        return view('show', compact('movie'));
     }
 
     public function fetch($query)
