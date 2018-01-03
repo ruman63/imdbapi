@@ -1,3 +1,25 @@
 body {
     background: #eee;
 }
+.level {
+    display: flex;
+}
+.stack{
+    display: flex;
+    flex-direction: column;
+}
+.flex {
+    flex-grow: 1;
+}
+.maxh-4 {
+    max-height: 4em;
+}
+.mr-1 {
+    margin-right: 1em;
+}
+.no-m{
+    margin: 0;
+}
+.pa-2 {
+    padding: 2em;
+}

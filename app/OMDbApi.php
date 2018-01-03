@@ -19,7 +19,7 @@ class OMDbApi
         ]);
     }
 
-    public function search(string $keyword, $type = null)
+    public function search($keyword, $type = null)
     {
         return $this->fetch([
             's' => $keyword,
