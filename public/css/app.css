@@ -1,6 +1,34 @@
 body {
     background: #eee;
 }
+nav {
+    padding: 7px 0;
+    line-height: 50px;
+    height: 64px;
+}
+.search-wrapper {
+    padding-left: 1em;
+    margin: 0 15px;
+    height: auto !important;
+    transition: margin .6s ease-in;
+}
+.search-wrapper:focus-within {
+    margin: 0;
+}
+.search-wrapper .material-icons {
+    position: absolute;
+    right: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.search-wrapper input#material-search {
+    margin: 0;
+}
+.search-wrapper input#material-search, .search-wrapper input#material-search:focus {
+    border: none;
+    box-shadow: none;
+}
+
 .level {
     display: flex;
 }

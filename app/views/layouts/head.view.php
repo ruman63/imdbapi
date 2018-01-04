@@ -11,3 +11,4 @@
     <title>Open Movie Database</title>
 </head>
 <body>
+    <?php view('layouts/nav'); ?>
