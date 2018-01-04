@@ -1,17 +1,30 @@
 <?php view('layouts/head'); ?>
-    <div>
-        <?php foreach ($list as $movie): ?>
-            <div class="level pa-2">
-                <img src="<?php echo $movie->Poster ?>" 
-                    alt="<?php echo $movie->Title ?>" 
-                    class="maxh-4 mr-1">
-                <div class="flex">
-                    <h3 class="no-m"> <?php echo $movie->Title . " (" . $movie->Year . ")"; ?> </h3>
-                    <h4 class="no-m"><small><?php echo $movie->Type ?></small></h4>
-                    <a href="/show?id=<?php echo $movie->imdbID ?>"> Read More </a>
-                </div>
+    <div class="container">
+        <div class="section">
+            <div class="col s12">
+                <?php if (count($list)): ?>
+                    <h5 class="title">
+                        Found total <?= $total ?> result(s) for "<?= App\Core\Request::query('search') ?>"
+                    </h5>
+                    <ul class="collection">
+                    <?php foreach ($list as $movie): ?>
+                        <li class="collection-item avatar">
+                            <img src="<?= $movie->Poster ?>" alt="<?= $movie->Title ?>" class="circle auto-height square">
+                            <span class="title">
+                                <a href="/show?id=<?= $movie->imdbID ?>">
+                                    <?= "{$movie->Title}" ?> 
+                                </a> <?= "({$movie->Year})"; ?>
+                            </span>
+                            <p>
+                                <?= ucwords($movie->Type) ?>
+                            </p>
+                        </li>
+                    <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <div class="card-panel">Please Search Something! In the search bar...</div>
+                <?php endif; ?>
             </div>
-            <hr>
-        <?php endforeach ?>
+        </div>
     </div>
 <?php view('layouts/footer'); ?>

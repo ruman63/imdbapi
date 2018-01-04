@@ -16,14 +16,14 @@ class Request
     public static function params($key)
     {
         if (array_key_exists($key, $_POST)) {
-            return $_POST[$key];
+            return trim($_POST[$key]);
         }
     }
 
     public static function query($key)
     {
         if (array_key_exists($key, $_GET)) {
-            return $_GET[$key];
+            return trim($_GET[$key]);
         }
     }
 }

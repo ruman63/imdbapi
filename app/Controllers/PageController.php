@@ -16,11 +16,16 @@ class PageController
     public function index()
     {
         $search = Request::query('search');
-        $type = Request::query('type');
-        
-        $result = $this->api->search($search, $type);
-        $list = $result->Search;
-        $total = $result->totalResults;
+        if ($search) {
+            $type = Request::query('type');
+            $result = $this->api->search($search, $type);
+    
+            $list = $result->Search;
+            $total = $result->totalResults;
+        } else {
+            $list = [];
+            $total = 0;
+        }
         
         return view('index', compact('list', 'total'));
     }

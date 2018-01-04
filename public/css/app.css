@@ -24,6 +24,12 @@ body {
 .maxh-4 {
     max-height: 4em;
 }
+.square {
+    border-radius: 0;
+}
+.auto-height {
+    height: auto !important;
+}
 .maxh-350p {
     max-height: 350px;
 }
