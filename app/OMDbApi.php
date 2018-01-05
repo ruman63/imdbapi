@@ -21,6 +21,7 @@ class OMDbApi
 
     public function search($keyword, $type = null)
     {
+        $type = array_search($type, ['movie', 'series', 'episode'], true) ? $type : null;
         return $this->fetch([
             's' => $keyword,
             'type'=> $type
