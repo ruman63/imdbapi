@@ -1,3 +1,4 @@
+/* Material Overrides */
 body {
     background: #eee;
 }
@@ -11,6 +12,14 @@ nav .nav-wrapper > .brand-logo {
     transform: none;
     position: static;
 }
+i.tiny {
+    font-size: 1.2rem;
+}
+.inline-xs-img {
+    height: 1.5rem;
+}
+
+/* Self Constructs */
 .search-wrapper {
     display: flex;
     align-items: center;
@@ -50,6 +59,20 @@ nav .nav-wrapper > .brand-logo {
 .search-wrapper button[type="submit"]:hover > .material-icons {
     transform: rotateY(180deg);
 }
+.movie-card .poster {
+    line-height: 250px;
+    margin: 1em 0;
+}
+.movie-card .poster > img {
+    width: 100%;
+    vertical-align: middle;
+}
+.seperator {
+    margin-left: 1em;
+    margin-right: 1em;
+    color: #aaa;
+}
+/* Helpers */
 .level {
     display: flex;
 }
@@ -100,12 +123,24 @@ nav .nav-wrapper > .brand-logo {
 .mt-0 {
     margin-top: 0;
 }
+.mb-1 {
+    margin-bottom: 1em;
+}
+.mb-half {
+    margin-bottom: 0.5em;
+}
 .no-m{
     margin: 0;
 }
 .pa-2 {
     padding: 2em;
 }
+.pv-2 {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+/* Responsive media Queries */
 @media only screen and (max-width: 600px){
     nav .nav-wrapper > .brand-logo {
         font-size: 20px;
@@ -124,6 +159,8 @@ nav .nav-wrapper > .brand-logo {
     }
 }
 
+
+/* Animation keyframes */
 @keyframes fadeColor {
     50% {
         background-color: #eee;

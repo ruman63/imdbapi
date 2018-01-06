@@ -9,10 +9,11 @@
                     type="text" class="mr-half"
                     name="search"
                     value="<?= App\Core\Request::query('search') ?? '' ?>">
+                <?php $filter = App\Core\Request::query('type') ?? '' ?>
                 <select name="type" class="mr-half">
-                    <option value="all" selected>All</option>
-                    <option value="movie">Movies</option>
-                    <option value="series">TV Shows</option>
+                    <option value="all" <?= $filter != "movie" && $filter!="series" ? 'selected' : '' ?> > All </option>
+                    <option value="movie" <?= $filter == "movie" ? 'selected' : '' ?>>Movies</option>
+                    <option value="series" <?= $filter == "series" ? 'selected' : '' ?>>TV Shows</option>
                 </select>
                 <button type="submit" class="transparent"><i class="material-icons">search</i></button>
             </form>
