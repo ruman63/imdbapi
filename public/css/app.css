@@ -12,40 +12,43 @@ nav .nav-wrapper > .brand-logo {
     position: static;
 }
 .search-wrapper {
+    display: flex;
+    align-items: center;
     padding: 0;
-    margin: 0 15px;
     height: auto;
-    transition: margin .6s ease-in;
 }
 .search-wrapper:focus-within {
-    margin: 0;
+    animation: fadeColor 1.7s infinite;
 }
 .search-wrapper input#material-search{
     margin: 0;
     width: auto;
+    min-width: 100px;
     padding: 0 1em;
-}
-.search-wrapper .material-icons {
-    height: 45px;
-    line-height: 45px;
 }
 .search-wrapper input#material-search, .search-wrapper input#material-search:focus
 {
+    flex: 1;
     border-bottom: none;
     box-shadow: none;
 }
-
-.search-wrapper .select-wrapper{ 
-    display: inline-block;
-}
 .search-wrapper input.select-dropdown{
-    width: 120px;
     height: auto;
     margin: 0;
     border: 0;
 }
 .search-wrapper button[type="submit"] {
     border: none;
+    order: 2;
+}
+.search-wrapper button[type="submit"] > .material-icons {
+    height: auto;
+    line-height: 1;
+    transition: transform 0.6s ease-in-out;
+}
+.search-wrapper button[type="submit"]:focus > .material-icons,
+.search-wrapper button[type="submit"]:hover > .material-icons {
+    transform: rotateY(180deg);
 }
 .level {
     display: flex;
@@ -65,7 +68,7 @@ nav .nav-wrapper > .brand-logo {
     padding: 0 1em;
 }
 .flex {
-    flex-grow: 1;
+    flex: 1;
 }
 .maxh-4 {
     max-height: 4em;
@@ -82,8 +85,14 @@ nav .nav-wrapper > .brand-logo {
 .mr-1 {
     margin-right: 1em;
 }
+.ml-1 {
+    margin-left: 1em;
+}
 .mr-half {
     margin-right: .5em;
+}
+.ml-half {
+    margin-left: .5em;
 }
 .mb-0 {
     margin-bottom: 0;
@@ -96,4 +105,27 @@ nav .nav-wrapper > .brand-logo {
 }
 .pa-2 {
     padding: 2em;
+}
+@media only screen and (max-width: 600px){
+    nav .nav-wrapper > .brand-logo {
+        font-size: 20px;
+    }
+    .search-wrapper {
+        flex-wrap: wrap;
+    }
+    .search-wrapper .select-wrapper {
+        width: calc(100% - 2em);
+        order: 3;
+        flex: none;
+        margin-left: 1em;
+    }
+    .select-wrapper input.select-dropdown {
+        width: 100%;
+    }
+}
+
+@keyframes fadeColor {
+    50% {
+        background-color: #eee;
+    }
 }
