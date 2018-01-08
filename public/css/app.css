@@ -12,6 +12,11 @@ nav .nav-wrapper > .brand-logo {
     transform: none;
     position: static;
 }
+#toast-container{
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20%;
+}
 i.tiny {
     font-size: 1.2rem;
 }

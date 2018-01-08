@@ -36,14 +36,22 @@ class OMDbApi
             'plot' => $plot
         ]);
     }
-
+    
     public function fetch($query)
     {
         $query['apikey'] = self::OMDB_KEY;
         $response = $this->client->get('/', ['query' => $query]);
         $contents = json_decode($response->getBody()->getContents());
         if ($contents->Response !== 'True') {
-            throw new Exception("Failure: {$contents->Error}");
+            if ($contents->Error == 'Movie not found!') {
+                $_SESSION['flash']['errors'][] = "No Results Found! Try different keywords.";
+            } elseif ($contents->Error == 'Too many results.') {
+                $_SESSION['flash']['errors'][] = "Too few characters! Too many results. Be a little more specific.";
+            } elseif ($contents->Error == 'Incorrect IMDb ID.') {
+                $_SESSION['flash']['errors'][] = "Invalid IMDb ID! No movie found!";
+            } else {
+                $_SESSION['flash']['errors'][] = $contents->Error;
+            }
         }
         unset($contents->Response);
         return $contents;
