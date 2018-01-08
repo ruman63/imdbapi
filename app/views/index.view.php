@@ -9,7 +9,7 @@
                     <ul class="collection">
                     <?php foreach ($movies->data() as $movie): ?>
                         <li class="collection-item avatar">
-                            <img src="<?= $movie->Poster ?>" alt="<?= $movie->Title ?>" class="circle auto-height square">
+                            <img src="<?= $movie->Poster != 'N/A' ? $movie->Poster : '/public/images/noposter.jpg' ?>" alt="<?= $movie->Title ?>" class="circle auto-height square">
                             <span class="title">
                                 <a href="/show?id=<?= $movie->imdbID ?>">
                                     <?= "{$movie->Title}" ?> 

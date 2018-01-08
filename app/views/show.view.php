@@ -10,7 +10,8 @@
                     <?= ucwords($movie->Type) ?>
                     <span class="seperator">|</span>
                     <?= "Runtime <b>{$movie->Runtime}</b>" ?>
-                    <?= $movie->Director != 'N/A' ? "<span class=\"seperator\">|</span>Directed by <b>{$movie->Director}</b>." : "" ?>
+                    <?= $movie->Director != 'N/A' ? "<span class=\"seperator\">|</span>Directed by <b>{$movie->Director}</b>" : "" ?>
+                    <?= $movie->Type == 'series' ? "<span class=\"seperator\">|</span>Total Seasons <b>{$movie->totalSeasons}</b>" : "" ?>
                 </div>
                 <div class="mb-1">
                     <span class="orange-text mb-1">
@@ -30,7 +31,7 @@
                 <div class="row">
                     <div class="col s12 m4 l3">
                         <div class="poster">
-                            <img src="<?= $movie->Poster ?>" alt="<?= $movie->Title ?>">
+                            <img src="<?= $movie->Poster !='N/A' ? $movie->Poster : '/public/images/noposter.jpg' ?>" alt="<?= $movie->Title ?>">
                         </div>
                     </div>
                     <div class="col s12 m8 l9">
@@ -40,6 +41,13 @@
                                 <a href="#storyline" data-expand="0">Read more</a>
                             <?php endif; ?>
                         </p>
+                        <div class="tags">
+                            <?php foreach (explode(', ', $movie->Genre) as $genre) : ?>
+                                <div class="chip teal white-text">
+                                    <?= $genre ?>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>
             </div>
