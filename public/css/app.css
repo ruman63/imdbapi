@@ -73,6 +73,11 @@ i.tiny {
     color: #aaa;
 }
 /* Helpers */
+.clearfix:after {
+    display: block;
+    content: "";
+    clear: both;
+}
 .level {
     display: flex;
 }

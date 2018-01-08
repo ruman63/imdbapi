@@ -19,12 +19,13 @@ class OMDbApi
         ]);
     }
 
-    public function search($keyword, $type = null)
+    public function search($keyword, $page = 1, $type = null)
     {
         $type = array_search($type, ['movie', 'series', 'episode'], true) ? $type : null;
         return $this->fetch([
             's' => $keyword,
-            'type'=> $type
+            'type' => $type,
+            'page' => $page
         ]);
     }
 

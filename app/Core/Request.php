@@ -8,6 +8,12 @@ class Request
         return trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
     }
 
+    public static function current(array $query = [])
+    {
+        $queryString = http_build_query($query);
+        return self::uri() . "/?{$queryString}";
+    }
+
     public static function method()
     {
         return $_SERVER['REQUEST_METHOD'];

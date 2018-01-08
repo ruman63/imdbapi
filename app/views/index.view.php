@@ -2,12 +2,12 @@
     <div class="container">
         <div class="section">
             <div class="col s12">
-                <?php if (count($list)): ?>
+                <?php if ($movies && count($movies->data())): ?>
                     <h5 class="title">
-                        Found total <?= $total ?> result(s) for "<?= App\Core\Request::query('search') ?>"
+                        Showing <?= "{$movies->from()}-{$movies->to()}" ?> of <?= $movies->total ?> result(s) for "<?= App\Core\Request::query('search') ?>"
                     </h5>
                     <ul class="collection">
-                    <?php foreach ($list as $movie): ?>
+                    <?php foreach ($movies->data() as $movie): ?>
                         <li class="collection-item avatar">
                             <img src="<?= $movie->Poster ?>" alt="<?= $movie->Title ?>" class="circle auto-height square">
                             <span class="title">
@@ -21,8 +21,16 @@
                         </li>
                     <?php endforeach; ?>
                     </ul>
+                    <div class="clearfix center-align">
+                        <?php if ($movies->hasPrevious()): ?>
+                            <a href="<?= $movies->previousUrl() ?>" class="btn waves-effect"> <i class="material-icons left">chevron_left</i> Prev </span></a>
+                        <?php endif; ?>
+                        <?php if ($movies->hasNext()): ?>
+                            <a href="<?= $movies->nextUrl() ?>" class="btn waves-effect"> Next <i class="material-icons right">chevron_right</i> </a>
+                        <?php endif; ?>
+                    </div>
                 <?php else: ?>
-                    <div class="card-panel">Please Search Something! In the search bar...</div>
+                    <div class="card-panel">Welcome, Try searching for Movies, TV Shows...</div>
                 <?php endif; ?>
             </div>
         </div>

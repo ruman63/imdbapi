@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\OMDbApi;
 use App\Core\Request;
+use App\Core\Paginator;
 
 class PageController
 {
@@ -16,18 +17,14 @@ class PageController
     public function index()
     {
         $search = Request::query('search');
-        if ($search) {
-            $type = Request::query('type');
-            $result = $this->api->search($search, $type);
-    
-            $list = $result->Search;
-            $total = $result->totalResults;
-        } else {
-            $list = [];
-            $total = 0;
+        $page = Request::query('page') ?? 1;
+        if (!$search) {
+            return view('index');
         }
-        
-        return view('index', compact('list', 'total'));
+        $type = Request::query('type');
+        $result = $this->api->search($search, $page, $type);
+        $movies = new Paginator($result->Search ?? [], $result->totalResults ?? 0);
+        return view('index', compact('movies'));
     }
 
     public function show()
