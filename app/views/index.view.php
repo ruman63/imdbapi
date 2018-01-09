@@ -7,12 +7,12 @@
                 <?php endif;?>
                 <?php if ($movies && count($movies->data())): ?>
                     <h5 class="title">
-                        Showing <?= "{$movies->from()}-{$movies->to()}" ?> of <?= $movies->total ?> result(s) for "<?= App\Core\Request::query('search') ?>"
+                        Showing <?= "{$movies->from()}-{$movies->to()}" ?> of <?= $movies->total ?> result(s) for "<?= Core\Request::query('search') ?>"
                     </h5>
                     <ul class="collection">
                     <?php foreach ($movies->data() as $movie): ?>
                         <li class="collection-item avatar">
-                            <img src="<?= $movie->Poster != 'N/A' ? $movie->Poster : '/public/images/noposter.jpg' ?>" alt="<?= $movie->Title ?>" class="circle auto-height square">
+                            <img src="<?= $movie->Poster != 'N/A' ? $movie->Poster : '/images/noposter.jpg' ?>" alt="<?= $movie->Title ?>" class="circle auto-height square">
                             <span class="title">
                                 <a href="/show?id=<?= $movie->imdbID ?>">
                                     <?= "{$movie->Title}" ?> 

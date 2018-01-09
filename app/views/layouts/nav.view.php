@@ -9,8 +9,8 @@
                     type="text" class="mr-half"
                     name="search"
                     required
-                    value="<?= App\Core\Request::query('search') ?? '' ?>">
-                <?php $filter = App\Core\Request::query('type') ?? '' ?>
+                    value="<?= Core\Request::query('search') ?? '' ?>">
+                <?php $filter = Core\Request::query('type') ?? '' ?>
                 <select name="type" class="mr-half">
                     <option value="all" <?= $filter != "movie" && $filter!="series" ? 'selected' : '' ?> > All </option>
                     <option value="movie" <?= $filter == "movie" ? 'selected' : '' ?>>Movies</option>

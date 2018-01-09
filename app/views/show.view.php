@@ -23,13 +23,13 @@
                         <?php endif;?>
                         <?php endforeach; ?> 
                     </span>
-                    <img src="/public/images/imdb.png" alt="imdb-logo" class="inline-xs-img ml-half mr-half">
+                    <img src="/images/imdb.png" alt="imdb-logo" class="inline-xs-img ml-half mr-half">
                     <?= "{$movie->imdbRating}/10" ?> &nbsp; <small><?= "({$movie->imdbVotes} votes)"?></small>
                 </div>
                 <div class="row">
                     <div class="col s12 m4 l3">
                         <div class="poster">
-                            <img src="<?= $movie->Poster !='N/A' ? $movie->Poster : '/public/images/noposter.jpg' ?>" alt="<?= $movie->Title ?>">
+                            <img src="<?= $movie->Poster !='N/A' ? $movie->Poster : '/images/noposter.jpg' ?>" alt="<?= $movie->Title ?>">
                         </div>
                     </div>
                     <div class="col s12 m8 l9">
@@ -40,7 +40,7 @@
                             <?php endif; ?>
                         </p>
                         <div class="tags">
-                            <?php foreach (explode(', ', $movie->Genre) as $genre) : ?>
+                            <?php foreach (explode(', ', $movie->Genre != 'N/A' ? $movie->Genre : []) as $genre) : ?>
                                 <div class="chip teal white-text">
                                     <?= $genre ?>
                                 </div>

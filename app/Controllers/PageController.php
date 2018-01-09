@@ -2,8 +2,8 @@
 namespace App\Controllers;
 
 use App\OMDbApi;
-use App\Core\Request;
-use App\Core\Paginator;
+use Core\Request;
+use Core\Paginator;
 
 class PageController
 {

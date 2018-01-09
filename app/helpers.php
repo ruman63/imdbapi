@@ -9,7 +9,7 @@ function dd($variable)
 function view($view, $data = [])
 {
     extract($data);
-    require "app/views/{$view}.view.php";
+    require "views/{$view}.view.php";
 }
 
 function str_limit($string, $limit=100, $append='...')

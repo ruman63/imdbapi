@@ -3,7 +3,8 @@
     "description": "Simple omdb api usage",
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Core\\": "core/" 
         },
         "files": [
             "app/helpers.php"

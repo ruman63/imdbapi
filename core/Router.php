@@ -1,5 +1,5 @@
 <?php
-namespace App\Core;
+namespace Core;
 
 use App\Exceptions\NotFoundHttpException;
 use BadMethodCallException;
@@ -11,7 +11,7 @@ class Router
         'POST' => []
     ];
 
-    public static function load($routes = 'app/routes.php')
+    public static function load($routes = '../app/routes.php')
     {
         $router = new static;
 
@@ -33,6 +33,7 @@ class Router
     public function handle($uri, $requestType)
     {
         if (! array_key_exists($uri, $this->routes[$requestType])) {
+            http_response_code(404);
             throw new NotFoundHttpException("No routes defined for [uri => '$uri']");
         }
 
