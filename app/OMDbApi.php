@@ -8,7 +8,6 @@ use GuzzleHttp\Exception\ClientException;
 class OMDbApi
 {
     const BASE_URI = "http://www.omdbapi.com/";
-    const OMDB_KEY = '501a6dc9';
     protected $client;
     
     
@@ -39,7 +38,7 @@ class OMDbApi
     
     public function fetch($query)
     {
-        $query['apikey'] = self::OMDB_KEY;
+        $query['apikey'] = (require 'config.php')['OMDB_KEY'];
         $response = $this->client->get('/', ['query' => $query]);
         $contents = json_decode($response->getBody()->getContents());
         if ($contents->Response !== 'True') {
