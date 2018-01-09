@@ -11,8 +11,8 @@ This app uses [OMDB Api](http://www.omdbapi.com)
 ## Step 1 (Clone Repository):
 Clone this repository using `git`.
 ```bash
-git clone https://github.com/ruman63/omdbapi
-cd omdbapi
+git clone https://github.com/ruman63/imdbapi
+cd imdbapi
 ```
 
 ## Step 2 (Install Dependencies):
