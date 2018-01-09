@@ -5,7 +5,7 @@ This app uses [OMDB Api](http://www.omdbapi.com)
 # Installation
 ## Prerequisites
 
-- PHP (>=7.0)
+- PHP
 - Composer
 
 ## Step 1 (Clone Repository):
