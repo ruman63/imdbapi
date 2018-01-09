@@ -44,13 +44,13 @@ class OMDbApi
         $contents = json_decode($response->getBody()->getContents());
         if ($contents->Response !== 'True') {
             if ($contents->Error == 'Movie not found!') {
-                $_SESSION['flash']['errors'][] = "No Results Found! Try different keywords.";
+                flashError("No Results Found! Try different keywords.");
             } elseif ($contents->Error == 'Too many results.') {
-                $_SESSION['flash']['errors'][] = "Too few characters! Too many results. Be a little more specific.";
+                flashError("Too few characters! Too many results. Be a little more specific.");
             } elseif ($contents->Error == 'Incorrect IMDb ID.') {
-                $_SESSION['flash']['errors'][] = "Invalid IMDb ID! No movie found!";
+                flashError("Invalid IMDb ID! No movie found!");
             } else {
-                $_SESSION['flash']['errors'][] = $contents->Error;
+                flashError($contents->Error);
             }
         }
         unset($contents->Response);

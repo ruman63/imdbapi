@@ -2,6 +2,9 @@
     <div class="container">
         <div class="section">
             <div class="col s12">
+                <?php if (count($_SESSION['flash']['errors']))  : ?>
+                    <h5><?= $_SESSION['flash']['errors'][0] ?></h5>
+                <?php endif;?>
                 <?php if ($movies && count($movies->data())): ?>
                     <h5 class="title">
                         Showing <?= "{$movies->from()}-{$movies->to()}" ?> of <?= $movies->total ?> result(s) for "<?= App\Core\Request::query('search') ?>"
@@ -29,9 +32,7 @@
                             <a href="<?= $movies->nextUrl() ?>" class="btn waves-effect"> Next <i class="material-icons right">chevron_right</i> </a>
                         <?php endif; ?>
                     </div>
-                <?php elseif (count($_SESSION['flash']['errors'])):?>
-                    <span data-toast data-text="<?= $_SESSION['flash']['errors'][0] ?>" data-duration="6000"></span>
-                <?php else: ?>
+                <?php elseif (!count(errors())):?>
                     <div class="card-panel">Welcome, Try searching for Movies, TV Shows...</div>
                 <?php endif; ?>
             </div>

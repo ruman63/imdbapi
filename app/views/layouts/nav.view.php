@@ -8,6 +8,7 @@
                 <input id="material-search" placeholder="Search Movies, Shows, Episodes Here ..."
                     type="text" class="mr-half"
                     name="search"
+                    required
                     value="<?= App\Core\Request::query('search') ?? '' ?>">
                 <?php $filter = App\Core\Request::query('type') ?? '' ?>
                 <select name="type" class="mr-half">

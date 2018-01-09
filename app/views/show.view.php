@@ -1,7 +1,5 @@
 <?php view('layouts/head'); ?>
-<?php if (count($_SESSION['flash']['errors'])): ?>
-    <span data-toast data-text="<?= $_SESSION['flash']['errors'][0] ?>" data-duration="6000"></span>
-<?php else: ?>
+<?php if (!count(errors())): ?>
     <div class="teal lighten-2 pv-2">
         <div class="container">
             <div class="movie-card card-panel">

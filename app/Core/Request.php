@@ -19,17 +19,25 @@ class Request
         return $_SERVER['REQUEST_METHOD'];
     }
 
-    public static function params($key)
+    public static function params($key, $strip = true)
     {
         if (array_key_exists($key, $_POST)) {
-            return trim($_POST[$key]);
+            if ($strip) {
+                return strip_tags(trim($_POST[$key]));
+            } else {
+                return trim($_POST[$key]);
+            }
         }
     }
 
-    public static function query($key)
+    public static function query($key, $strip =  true)
     {
         if (array_key_exists($key, $_GET)) {
-            return trim($_GET[$key]);
+            if ($strip) {
+                return strip_tags(trim($_GET[$key]));
+            } else {
+                return trim($_GET[$key]);
+            }
         }
     }
 }

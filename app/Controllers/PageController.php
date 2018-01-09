@@ -16,12 +16,13 @@ class PageController
 
     public function index()
     {
-        if (!$search = Request::query('search')) {
-            return view('index');
-        }
         $page = Request::query('page') ?? 1;
         $type = Request::query('type');
-        $result = $this->api->search($search, $page, $type);
+
+        if ($search = Request::query('search')) {
+            $result = $this->api->search($search, $page, $type);
+        }
+        
         $movies = new Paginator($result->Search ?? [], $result->totalResults ?? 0);
         return view('index', compact('movies'));
     }
